@@ -1,11 +1,21 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class DateSorter {
     public Collection<LocalDate> sortDates(List<LocalDate> unsortedDates) {
-        return new ArrayList<>();
+        unsortedDates.sort((date1, date2) -> {
+            boolean hasRInMonth1 = hasRInMonth(date1);
+            boolean hasRInMonth2 = hasRInMonth(date2);
+
+            if (hasRInMonth1 != hasRInMonth2){
+                return hasRInMonth1 ? -1 : 1;
+            } else{
+                return hasRInMonth1 ? date1.compareTo(date2) : date2.compareTo(date1);
+            }
+        });
+
+        return unsortedDates;
     }
 
     // функція для перевірки дати на букву "r"
