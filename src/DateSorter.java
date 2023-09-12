@@ -8,8 +8,8 @@ public class DateSorter {
             boolean hasRInMonth1 = hasRInMonth(date1);
             boolean hasRInMonth2 = hasRInMonth(date2);
 
-            // €кщо м≥с€ц≥ в≥др≥зн€ютьс€, в початок ставимо з буквою
-            // €кщо однаков≥, з буквою сортуЇмо в≥д найм. до найб., без букви - навпаки
+            // if months are different, the first one dates coming with an 'r'
+            // if months are the same, dates with an 'r' sorted ascending, other dates - descending
             if (hasRInMonth1 != hasRInMonth2){
                 return hasRInMonth1 ? -1 : 1;
             } else{
@@ -20,10 +20,10 @@ public class DateSorter {
         return unsortedDates;
     }
 
-    // функц≥€ дл€ перев≥рки дати на букву "r"
+    // utility function to check if month has letter 'r'
     private boolean hasRInMonth(LocalDate date){
         int month = date.getMonthValue();
-        // м≥с€ц≥ з 5 по 8 не мають букви
+        // months 5, 6, 7, 8 don't have letter 'r'
         return (month < 5 || month > 8);
     }
 }
