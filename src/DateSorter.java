@@ -8,6 +8,8 @@ public class DateSorter {
             boolean hasRInMonth1 = hasRInMonth(date1);
             boolean hasRInMonth2 = hasRInMonth(date2);
 
+            // €кщо м≥с€ц≥ в≥др≥зн€ютьс€, в початок ставимо з буквою
+            // €кщо однаков≥, з буквою сортуЇмо в≥д найм. до найб., без букви - навпаки
             if (hasRInMonth1 != hasRInMonth2){
                 return hasRInMonth1 ? -1 : 1;
             } else{
